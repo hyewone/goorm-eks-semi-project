@@ -36,7 +36,7 @@
 <aside>
 💡
 
-- 요구사항 Step 1,2,3,4 완료
+- 요구사항 전체 완료
 - 요구사항 외 Argo CD, Argo Rollouts, GitOps 로 Blue/Green 배포하기 완료
 - 카카오 멘토님들과 QnA 및 회고 진행
 
