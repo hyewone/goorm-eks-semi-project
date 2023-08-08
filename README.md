@@ -14,6 +14,7 @@
     - [Stateful WordPress 리소스 구성](#wordpress-mysql)
     - [Stateful MySQL 리소스 구성](#stateful-mysql)
     - [Stateless 애플리케이션 배포](#stateless-app)
+- [Statefule/Stateless](#stateful-stateless)
 - [EKS 클러스터 구성](#eks-cluster)
 - [Stateful MySQL 리소스 구성](#stateful-mysql-config)
 - [Stateless 애플리케이션 배포하기](#stateless-app-deploy)
@@ -80,6 +81,31 @@
 
 <br/>
 
+
+<a name="stateful-stateless"></a>
+## stateful/stateless
+    
+    <aside>
+    💡 state → 애플리케이션의 상태 정보
+    pod의 상태정보 저장 및 필요 여부에 따라 stateful/stateless로 구분
+     stateful/stateless 에 따라 배포 방식이 약간 다름
+    
+    pod의 이름, DNS(네트워크 식별자), 배포/업데이트/스케일링 순서, 볼륨(disk) 정보 등
+    
+    stateful pod : 안정적이고 작업 순서가 보장되며 고유한 상태를 유지
+    
+    stateless pod : 비교적 가볍고 언제든지 새롭게 pod가 재시작 되어도 문제 없음
+    
+    stateless → deployment
+    stateful → statefulset
+     - 순차적 기동, pod 이름이 시퀀셜, 특정 pod 재시작 되어도 기존의 pvc, pv 와 연결됨
+    
+    일반 API 서버, 애플리케이션은 deployment | DB는 statefulset
+    
+    </aside>
+
+
+<br/>
 
 <a name="eks-cluster"></a>
 ## EKS 클러스터 구성하기
@@ -1598,84 +1624,3 @@
 - Recreate, RollingUpdate 배포 전략에 대해 이해하고, Blue/Green 배포 전략에 대해 한 번 더 리마인드하고 실습까지 해볼 수 있어서 좋았음
 - 실습하며 kubectl 명령어를 이것 저것 시도해볼 수 있어서 좋았음
 - 조금 더 심화하지 못해 아쉽지만, 세미 프로젝트 과정을 거치게 됨으로써 다음 파이널 프로젝트에서 한 단계 심화된 결과물을 만들어낼 수 있을 것 같아서 개인적으로  만족스러운 세미 프로젝트였음
-
-- 
-
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-- 문제
-    - MySQL 프로세스가 **`ibdata1`** 에 접근하지 못하는 상황 종종 발생
-        - MySQL 프로세스가 **`ibdata1`** 에 접근하지 못하는 상황 종종 발생
-        
-        ```bash
-        kubectl get pod
-        NAME                         READY   STATUS             RESTARTS         AGE
-        wordpress-7c6d6ddc4d-9774d   0/1     CrashLoopBackOff   86 (2m23s ago)   7h36m
-        wordpress-mysql-0            1/1     Running            0                7h22m
-        wordpress-mysql-1            0/1     CrashLoopBackOff   113 (42s ago)    7h22m
-        
-        kubectl logs wordpress-mysql-1
-        2023-06-07 23:24:01 1 [ERROR] InnoDB: Unable to lock ./ibdata1, error: 11
-        2023-06-07 23:24:01 1 [Note] InnoDB: Check that you do not already have another mysqld process using the same InnoDB data or log files.
-        
-        kubectl logs wordpress-7c6d6ddc4d-9774d
-        Warning: mysqli::mysqli(): (HY000/1130): Host '192.168.159.179' is not allowed to connect to this MySQL server in - on line 22
-        MySQL Connection Error: (1130) Host '192.168.159.179' is not allowed to connect to this MySQL server
-        Warning: mysqli::mysqli(): (HY000/1130): Host '192.168.159.179' is not allowed to connect to this MySQL server in - on line 22
-        ```
-        
-        - 두 개의 MySQL Pod 가 동일 PVC가 할당되어 lock 걸려 접근하지 못하는 상황으로 각 Pod 에 PVC가 할당되도록 volumeCliamTemplates 로 yaml 수정
-        
-        ```yaml
-        volumeClaimTemplates:
-          - metadata:
-              name: mysql-persistent-storage
-            spec:
-              accessModes: [ "ReadWriteOnce" ]
-              storageClassName: "ebs-storage-class"
-              resources:
-                requests:
-                  storage: 5Gi
-        ```
-        
-        - 이제 데이터 이원화가 걱정됨 어떻게 해결할 수 있나
-    - WordPress 접속 시 종종 ‘Error establishing a database connection’
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b297be5-a946-473f-ab79-bd7cc3d52ac6/Untitled.png)
-        
-    - 
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a536f721-d7ed-435c-aba3-6c258f9b4f73/Untitled.png)
-        
-    
-- stateful/stateless
-    
-    <aside>
-    💡 state → 애플리케이션의 상태 정보
-    pod의 상태정보 저장 및 필요 여부에 따라 stateful/stateless로 구분
-     stateful/stateless 에 따라 배포 방식이 약간 다름
-    
-    pod의 이름, DNS(네트워크 식별자), 배포/업데이트/스케일링 순서, 볼륨(disk) 정보 등
-    
-    stateful pod : 안정적이고 작업 순서가 보장되며 고유한 상태를 유지
-    
-    stateless pod : 비교적 가볍고 언제든지 새롭게 pod가 재시작 되어도 문제 없음
-    
-    stateless → deployment
-    stateful → statefulset
-     - 순차적 기동, pod 이름이 시퀀셜, 특정 pod 재시작 되어도 기존의 pvc, pv 와 연결됨
-    
-    일반 API 서버, 애플리케이션은 deployment | DB는 statefulset
-    
-    </aside>
