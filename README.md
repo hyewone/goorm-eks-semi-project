@@ -1,5 +1,6 @@
 # EKS 환경에 WordPress 및 MySQL 구성하기
 해당 프로젝트는 구름 KDT 쿠버네티스 전문가 양성 과정에서 진행한 세미 프로젝트입니다.
+<br/>AWS EKS 클러스터에서 Stateful, Stateless 애플리케이션의 이해와 배포 실습을 목적으로 합니다.
 
 <br/>
 
