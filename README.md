@@ -3,6 +3,33 @@
 
 <br/>
 
+
+
+## 프로젝트 목차
+
+- 진행상황
+  
+- 요구사항
+    - k8s 클러스터 구성
+    - Stateful WordPress 리소스 구성
+    - Stateful MySQL 리소스 구성
+    - Stateless 애플리케이션 배포
+    
+- EKS 클러스터 구성
+
+- Stateful WordPress 및 MySQL 구성하기
+
+- Stateful MySQL 리소스 구성
+
+- Stateless 애플리케이션 배포하기
+
+- 질문사항
+
+- 회고
+
+
+<br/>
+
 ## 진행상황
 
 <aside>
@@ -18,7 +45,7 @@
 
 ## 요구사항
 
-### k8s 클러스터 구성
+### EKS 클러스터 구성
 
 - 작업 환경은 개인별로 편한걸 사용해주시면 됩니다. (AWS, GCP 등)
     - [x]  EKS 클러스터 구성 ([참고링크](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/getting-started-console.html#eks-create-cluster))
@@ -53,7 +80,7 @@
 
 <br/>
 
-## EKS 환경 구성하기
+## EKS 클러스터 구성하기
 
 - kubectl 설치
 - eksctl 설치
