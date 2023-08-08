@@ -9,29 +9,21 @@
 ## 프로젝트 목차
 
 - [진행상황](#progress)
-- 진행상황
-  
-- 요구사항
-    - k8s 클러스터 구성
-    - Stateful WordPress 리소스 구성
-    - Stateful MySQL 리소스 구성
-    - Stateless 애플리케이션 배포
-    
-- EKS 클러스터 구성
-
-- Stateful WordPress 및 MySQL 구성하기
-
-- Stateful MySQL 리소스 구성
-
-- Stateless 애플리케이션 배포하기
-
-- 질문사항
-
-- 회고
+- [요구사항](#requirements)
+    - [k8s 클러스터 구성](#k8s-cluster)
+    - [Stateful WordPress 리소스 구성](#wordpress-mysql)
+    - [Stateful MySQL 리소스 구성](#stateful-mysql)
+    - [Stateless 애플리케이션 배포](#stateless-app)
+- [EKS 클러스터 구성](#eks-cluster)
+- [Stateful MySQL 리소스 구성](#stateful-mysql-config)
+- [Stateless 애플리케이션 배포하기](#stateless-app-deploy)
+- [질문사항](#questions)
+- [회고](#retrospective)
 
 
 <br/>
 
+<a name="progress"></a>
 ## 진행상황
 <aside>
 💡
@@ -44,8 +36,12 @@
 
 <br/>
 
+
+<a name="requirements"></a>
 ## 요구사항
 
+
+<a name="k8s-cluster"></a>
 ### EKS 클러스터 구성
 
 - 작업 환경은 개인별로 편한걸 사용해주시면 됩니다. (AWS, GCP 등)
@@ -53,6 +49,7 @@
         - [x]  노드 provisioning 2개 이상
         
 
+<a name="wordpress-mysql"></a>
 ### Stateful WordPress 리소스 구성 추가
 
 - [x]  Deployment로 배포
@@ -60,6 +57,7 @@
 - [x]  HPA를 설정하여 Autoscailing이 가능하도록 정의 (Metric Server 설치)
 - [x]  resources, livenessProbe를 정의
 
+<a name="stateful-mysql"></a>
 ### Stateful MySQL 리소스 구성 추가
 
 - [x]  StatefulSet으로 배포
@@ -69,6 +67,7 @@
 - [x]  ~~PVC를 이용하여 스토리지와 연결~~
 - [x]  ~~Headless Service를 생성하여 mysql app과 연결~~
 
+<a name="stateless-app"></a>
 ### Stateless 애플리케이션 배포하기
 
 - stateless 애플리케이션 배포하기 (https://kubernetes.io/ko/docs/tutorials/stateless-application/)
@@ -82,8 +81,8 @@
 <br/>
 
 
+<a name="eks-cluster"></a>
 ## EKS 클러스터 구성하기
-<a name="progress"></a>
 
 - kubectl 설치
 - eksctl 설치
@@ -231,6 +230,7 @@
 
 <br/>
 
+<a name="stateful-mysql-config"></a>
 ## Stateful WordPress 및 MySQL 구성하기
 
 
@@ -736,6 +736,7 @@
     
 <br/>
 
+<a name="stateless-app-deploy"></a>
 ## Stateless 애플리케이션 배포하기
 
 
@@ -1573,6 +1574,7 @@
 
 <br/>
 
+<a name="questions"></a>
 ## 질문사항
 
 
@@ -1588,6 +1590,7 @@
 
 <br/>
 
+<a name="retrospective"></a>
 ## 회고
 
 
