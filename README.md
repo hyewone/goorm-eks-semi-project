@@ -1,24 +1,20 @@
 # EKS 환경에 WordPress 및 MySQL 구성하기
+해당 프로젝트는 구름 KDT 쿠버네티스 전문가 양성 과정에서 진행한 세미 프로젝트입니다.
 
-[예시: WordPress와 MySQL을 퍼시스턴트 볼륨에 배포하기](https://kubernetes.io/ko/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+<br/>
 
 ## 진행상황
 
 <aside>
 💡
 
-- Step 1,2,3,4 완료
-- Argo CD, Argo Rollouts, GitOps 로 Blue/Green 배포하기 완료
-
----
-
-- Istio 도입하여 Istio Ingress gateway 교체 예정
-- 프로메테우스, 그라파나 구성 예정
-- fluntd, ElasticSearch, kibana 로깅  구성 예정
-
-**→ 해당 예정 사항은 파이널 프로젝트에서 진행했습니다.**
+- 요구사항 Step 1,2,3,4 완료
+- 요구사항 외 Argo CD, Argo Rollouts, GitOps 로 Blue/Green 배포하기 완료
+- 카카오 멘토님들과 QnA 및 회고 진행
 
 </aside>
+
+<br/>
 
 ## 요구사항
 
@@ -55,9 +51,9 @@
     - [x]  Recreate, RollingUpdate의 동작 이해하고 BlueGreen 배포 구현해보기
     - [x]  (권장) Load Balancer 생성하기
 
-## EKS 환경 구성하기
+<br/>
 
----
+## EKS 환경 구성하기
 
 - kubectl 설치
 - eksctl 설치
@@ -201,11 +197,12 @@
     ip-192-168-139-149.ap-northeast-2.compute.internal   Ready    <none>   16s   v1.26.4-eks-0a21954
     ip-192-168-220-162.ap-northeast-2.compute.internal   Ready    <none>   15s   v1.26.4-eks-0a21954
     ```
-    
+
+
+<br/>
 
 ## Stateful WordPress 및 MySQL 구성하기
 
----
 
 - EBS 스토리지 클래스 생성
     
@@ -707,10 +704,10 @@
         ```
         
     
+<br/>
 
 ## Stateless 애플리케이션 배포하기
 
----
 
 - Redis 리더 Deployment 실행
     
@@ -1542,11 +1539,12 @@
 - fluntd, ElasticSearch, kibana 로깅  구성
     
     → 파이널 프로젝트에서 진행
-    
+
+
+<br/>
 
 ## 질문사항
 
----
 
 - [x]  Step2,3 에서 WordPress 와 MySQL(StatefulSet replica=2) 연동 시MySQL 파드에서 종종 에러 발생하며 죽는 현상이 있었음
     - ~~`InnoDB: Check that you do not already have another mysqld process using the same InnoDB data or log files`~~
@@ -1558,15 +1556,31 @@
     - Private Subnet 으로 구성된 클러스터로, NodePort 로 불가한 상태
     - [x]  효율적으로 Ingress 하나로 다른 네임스페이스의 ClusterIP 서비스를 라우팅 하는 방법이 궁금합니다. 아니면 실무에서 이런 경우 어떤식으로 구성하시는지 궁금합니다.
 
+<br/>
+
 ## 회고
 
----
 
 - 전에는 hostpath 로만 volume mount 해봤는데, EBS CSI 드라이버 설치하여 스토리지 클래스로 PV 동적 프로비저닝까지 해봐서 의미가 있음
 - Recreate, RollingUpdate 배포 전략에 대해 이해하고, Blue/Green 배포 전략에 대해 한 번 더 리마인드하고 실습까지 해볼 수 있어서 좋았음
 - 실습하며 kubectl 명령어를 이것 저것 시도해볼 수 있어서 좋았음
 - 조금 더 심화하지 못해 아쉽지만, 세미 프로젝트 과정을 거치게 됨으로써 다음 파이널 프로젝트에서 한 단계 심화된 결과물을 만들어낼 수 있을 것 같아서 개인적으로  만족스러운 세미 프로젝트였음
 
+- 
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 - 문제
     - MySQL 프로세스가 **`ibdata1`** 에 접근하지 못하는 상황 종종 발생
         - MySQL 프로세스가 **`ibdata1`** 에 접근하지 못하는 상황 종종 발생
