@@ -83,9 +83,8 @@
 
 
 <a name="stateful-stateless"></a>
-## stateful/stateless
+## Stateful/Stateless
     
-    <aside>
     💡 state → 애플리케이션의 상태 정보
     pod의 상태정보 저장 및 필요 여부에 따라 stateful/stateless로 구분
      stateful/stateless 에 따라 배포 방식이 약간 다름
@@ -102,7 +101,6 @@
     
     일반 API 서버, 애플리케이션은 deployment | DB는 statefulset
     
-    </aside>
 
 
 <br/>
