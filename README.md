@@ -177,7 +177,7 @@
     }
     ```
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aca6fa2f-f3ce-4a5e-92d7-7e6911ad3a93/Untitled.png)
+    ![Untitled](resources/Untitled%20(1).png)
     
 
 - EKS 클러스터 생성
@@ -240,9 +240,9 @@
     
     - AWS console 에서 EKS 클러스터에 노드그룹 추가
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7aaffc8f-fee2-460b-907e-10298fc707cb/Untitled.png)
+    ![Untitled](resources/Untitled%20(2).png)
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65cc6685-c56c-47c8-8465-1ac7896efc53/Untitled.png)
+    ![Untitled](resources/Untitled%20(3).png)
     
     ```bash
     kubectl get node
@@ -276,7 +276,7 @@
         https://oidc.eks.ap-northeast-2.amazonaws.com/id/9BEA1958342BFE917B097229E12C6C29
         ```
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/44c0c8df-a299-429d-8d7c-caea51aa1eba/Untitled.png)
+        ![Untitled](resources/Untitled%20(4).png)
         
     
     - IAM Role 생성
@@ -587,7 +587,7 @@
     
     - 로드밸런서 테스트
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dcfc4058-eca0-47b9-aa95-c3382be5bdf6/Untitled.png)
+    ![Untitled](resources/Untitled%20(5).png)
         
     
     - [Ingress 컨트롤러 설치](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) / [Ingress Nginx 컨트롤러](https://github.com/kubernetes/ingress-nginx/blob/main/README.md#readme)
@@ -642,7 +642,7 @@
     
     - Ingress 테스트
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/170fcf5c-6ff5-4c8f-89f1-089b658aa668/Untitled.png)
+    ![Untitled](resources/Untitled%20(6).png)
         
 - Metrics 서버 설치 및 WordPress HPA 적용
     - [Metrics 서버 설치](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/metrics-server.html)
@@ -1055,7 +1055,7 @@
         - 80 (O)
         - 작동은 되나 NodePort에 대한 실습 의도대로 이뤄진 건 아닌 것 같음;;
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afe3d859-0128-4427-a637-0517d3107525/Untitled.png)
+    ![Untitled](resources/Untitled%20(7).png)
     
 - 방명록 프론트엔드 scale up, down
     
@@ -1311,7 +1311,7 @@
         I3h6-wjKHJeeCMa3
         ```
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a65c0bdd-1ae3-4ae6-851c-cfd8c09bf239/Untitled.png)
+    ![Untitled](resources/Untitled%20(8).png)
         
     
     - [GitOps 를 위한 gitea 설치](https://docs.gitea.com/next/installation/install-on-kubernetes#:~:text=Installation%20with%20Helm%20(on%20Kubernetes))
@@ -1411,15 +1411,15 @@
         
         - 접속 확인
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/74a01ce7-63ab-4772-8336-b771b32cb9bc/Untitled.png)
+    ![Untitled](resources/Untitled%20(9).png)
         
         - GitOps를 위한 레포지토리 생성 및 매니페스트 작성
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1f20211-a991-4de8-9fe4-6925c3b581db/Untitled.png)
+    ![Untitled](resources/Untitled%20(10).png)
         
         - Argo CD 배포 확인
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/80ed4771-12d3-4ec5-ba92-e046a6b00d34/Untitled.png)
+    ![Untitled](resources/Untitled%20(11).png)
         
         ```bash
         # yaml version v4 -> version v5 변경
@@ -1435,7 +1435,7 @@
         frontend         1/1     1            1           2m13s   php-redis    gcr.io/google_samples/gb-frontend:v5         app=guestbook,tier=frontend
         ```
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a8aee0a-590d-4989-871e-355f5fa9a885/Untitled.png)
+    ![Untitled](resources/Untitled%20(12).png)
         
     
     - [Argo Rollouts 설치](https://argoproj.github.io/argo-rollouts/#:~:text=Relic%2C%20Graphite%2C%20InfluxDB-,%EB%B9%A0%EB%A5%B8%20%EC%8B%9C%EC%9E%91,-%C2%B6)
@@ -1580,7 +1580,7 @@
               └──□ rollout-bluegreen-dd78f6dcd-9t4ld   Pod         ✔ Running  12m  ready:1/1
         ```
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5b7ba20-eb7e-4e3c-ac16-cdaaa3081734/Untitled.png)
+    ![Untitled](resources/Untitled%20(13).png)
         
     
 - Istio Ingress Gateway 로 크로스 네임스페이스 라우팅해보기 (Ingress Controller 교체)
